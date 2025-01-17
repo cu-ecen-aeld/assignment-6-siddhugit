@@ -1,0 +1,19 @@
+#! /bin/sh
+case "$1" in
+	start)
+		echo "Loading hello"
+		cd /lib/modules/$(uname -r)/extra/ && module_load hello
+        echo "Loading faulty"
+		cd /lib/modules/$(uname -r)/extra/ && module_load faulty
+		;;
+	stop)
+		echo "Unloading hello"
+		cd /lib/modules/$(uname -r)/extra/ && module_unload hello
+        echo "Unloading faulty"
+		cd /lib/modules/$(uname -r)/extra/ && module_unload faulty
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		exit 1
+esac
+exit 0

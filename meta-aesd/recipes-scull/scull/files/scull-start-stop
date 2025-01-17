@@ -1,0 +1,15 @@
+#! /bin/sh
+case "$1" in
+	start)
+		echo "Loading scull"
+		cd /lib/modules/$(uname -r)/extra/ && scull_load
+		;;
+	stop)
+		echo "Unloading scull"
+		cd /lib/modules/$(uname -r)/extra/ && scull_unload
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		exit 1
+esac
+exit 0
